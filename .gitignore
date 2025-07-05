@@ -3,11 +3,11 @@
 *.ap_
 *.aab
 *.aar
-# Files for the ART/Dalvik VM
+
 *.dex
-# Java class files
+
 *.class
-# Generated files
+
 bin/
 build/
 .gradle/
@@ -29,7 +29,7 @@ local.properties
 captures/
 .cxx/
 .externalNativeBuild/
-# Android Studio specific files
+
 .idea/navEditor.xml
 .idea/deploymentTargetDropDown.xml
 .idea/migrations.xml
@@ -37,7 +37,7 @@ captures/
 .idea/tasks.xml
 .idea/uiDesigner.xml
 .idea/libraries
-# Mac files
+
 .DS_Store
 0
 
