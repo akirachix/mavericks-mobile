@@ -98,7 +98,7 @@ fun ResetPasswordScreen(
                         .background(Color.Transparent)
                 ) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        painter = painterResource(id = R.drawable.outline_arrow_back_24),
                         contentDescription = "Back",
                         tint = Color.White,
                         modifier = Modifier.size(28.dp)
@@ -131,6 +131,7 @@ fun ResetPasswordScreen(
 
             var password by remember { mutableStateOf("") }
             var confirmPassword by remember { mutableStateOf("") }
+            var errorMessage by remember { mutableStateOf(" ") }
 
 
             Column(
@@ -156,7 +157,7 @@ fun ResetPasswordScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color(0xFFF5F5DC))
-                        .border(1.dp, Color(0xFFDAA520), RoundedCornerShape(16.dp)),
+                        .border(1.dp, Color(0xFFDAA520), RoundedCornerShape(20.dp)),
                     placeholder = { Text("*************", color = Color(0xFF9B9B9B)) },
                     visualTransformation = PasswordVisualTransformation(),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -197,7 +198,7 @@ fun ResetPasswordScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color(0xFFF5F5DC))
-                        .border(1.dp, Color(0xFFDAA520), RoundedCornerShape(16.dp)),
+                        .border(1.dp, Color(0xFFDAA520), RoundedCornerShape(20.dp)),
                     placeholder = { Text("*************", color = Color(0xFF9B9B9B)) },
                     visualTransformation = PasswordVisualTransformation(),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -222,11 +223,29 @@ fun ResetPasswordScreen(
                 )
             }
 
+            if (errorMessage.isNotEmpty()){
+                Text(
+                    text = errorMessage,
+                    color=Color.Red,
+                    fontSize = 16.sp,
+                    fontFamily = poppinsFontFamily,
+                    modifier = Modifier.padding(top = 8.dp)
+                    )
+            }
 
             Spacer(modifier = Modifier.height(78.dp))
 
             Button(
-                onClick = onContinueClicked,
+                onClick = {
+                    if(password == confirmPassword && password.isNotBlank()){
+                        errorMessage=""
+                        onContinueClicked()
+                    }
+                    else{
+                        errorMessage="Passwords do not match or are empty!"
+                    }
+                },
+
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),

@@ -23,15 +23,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 
 
-class ForgotPassword : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            SuccessScreen()
-        }
-    }
-}
-
 @Composable
 fun SuccessScreen() {
     val poppinsFontFamily = FontFamily(
