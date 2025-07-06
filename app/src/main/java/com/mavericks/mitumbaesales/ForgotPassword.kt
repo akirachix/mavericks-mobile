@@ -1,6 +1,4 @@
 package com.mavericks.mitumbaesales.screens
-
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,8 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
 import com.mavericks.mitumbaesales.R
-import com.mavericks.mitumbaesales.poppinsFontFamily
-
+import com.mavericks.mitumbaesales.ui.theme.MitumbaesalesTheme
+import com.mavericks.mitumbaesales.ui.theme.NavyBlue
+import com.mavericks.mitumbaesales.ui.theme.LightYellow
+import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
+import com.mavericks.mitumbaesales.ui.theme.White
+import com.mavericks.mitumbaesales.ui.theme.poppinsFontFamily
 
 @Composable
 fun ForgotPasswordScreen(
@@ -34,25 +36,20 @@ fun ForgotPasswordScreen(
     modifier: Modifier = Modifier
 ) {
     var emailOrPhone by remember { mutableStateOf("") }
-
-    val NavyBlue = Color(0xFF0B3D91)
-    val LightYellow = Color(0xFFFFFBE6)
-    val GoldenrodYellow = Color(0xFFDAA520) 
+    var phoneNumber by remember { mutableStateOf("") }
 
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(White)
     ) {
-
-
         Card(
             shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .offset(y = 0.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
+            colors = CardDefaults.cardColors(containerColor = White),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
         ) {
             Column(
@@ -73,8 +70,7 @@ fun ForgotPasswordScreen(
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = poppinsFontFamily,
-                    color = NavyBlue,
-                    lineHeight = 36.sp
+                    color = NavyBlue
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
@@ -88,7 +84,7 @@ fun ForgotPasswordScreen(
                 )
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Email Address Field
+
                 OutlinedTextField(
                     value = emailOrPhone,
                     onValueChange = { emailOrPhone = it },
@@ -129,8 +125,8 @@ fun ForgotPasswordScreen(
 
 
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { },
+                    value = phoneNumber,
+                    onValueChange = { phoneNumber = it },
                     label = {
                         Text(
                             "Phone number",
@@ -185,7 +181,7 @@ fun ForgotPasswordScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { /* Handle Submit */ },
+                    onClick = {  },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -194,12 +190,13 @@ fun ForgotPasswordScreen(
                 ) {
                     Text(
                         "Submit",
-                        color = Color.White,
+                        color = White,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = poppinsFontFamily
                     )
                 }
+
             }
         }
     }
@@ -208,5 +205,7 @@ fun ForgotPasswordScreen(
 @Preview(showBackground = true)
 @Composable
 fun PreviewForgotPasswordScreen() {
-    ForgotPasswordScreen(onBackToLoginClicked = {})
+    MitumbaesalesTheme {
+        ForgotPasswordScreen(onBackToLoginClicked = {})
+    }
 }

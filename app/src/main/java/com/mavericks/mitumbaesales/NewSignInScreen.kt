@@ -27,7 +27,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
 import com.mavericks.mitumbaesales.R
-import com.mavericks.mitumbaesales.poppinsFontFamily
+import com.mavericks.mitumbaesales.ui.theme.MitumbaesalesTheme
+import com.mavericks.mitumbaesales.ui.theme.NavyBlue
+import com.mavericks.mitumbaesales.ui.theme.LightYellow
+import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
+import com.mavericks.mitumbaesales.ui.theme.White
+import com.mavericks.mitumbaesales.ui.theme.poppinsFontFamily
 
 @Composable
 fun NewSignInScreen(
@@ -38,15 +43,13 @@ fun NewSignInScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    val NavyBlue = Color(0xFF0B3D91) 
-    val LightYellow = Color(0xFFFFFBE6)
-    val GoldenrodYellow = Color(0xFFDAA520)
+
 
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(White)
     ) {
 
         Box(
@@ -80,7 +83,7 @@ fun NewSignInScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .offset(y = (-30).dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
+            colors = CardDefaults.cardColors(containerColor = White),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
         ) {
             Column(
@@ -156,7 +159,7 @@ fun NewSignInScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_password),
                             contentDescription = "Lock icon",
-                            tint = NavyBlue
+                            tint = NavyBlue // Use NavyBlue
                         )
                     },
                     visualTransformation = PasswordVisualTransformation(),
@@ -189,7 +192,7 @@ fun NewSignInScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { /* Handle Login */ },
+                    onClick = { },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -198,7 +201,7 @@ fun NewSignInScreen(
                 ) {
                     Text(
                         "Login",
-                        color = Color.White,
+                        color = White,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = poppinsFontFamily
@@ -254,5 +257,7 @@ fun AlignRightText(
 @Preview(showBackground = true)
 @Composable
 fun PreviewNewSignInScreen() {
-    NewSignInScreen(onForgotPasswordClick = {}, onSignUpClick = {})
+    MitumbaesalesTheme {
+        NewSignInScreen(onForgotPasswordClick = {}, onSignUpClick = {})
+    }
 }
