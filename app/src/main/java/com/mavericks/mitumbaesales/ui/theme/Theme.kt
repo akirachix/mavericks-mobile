@@ -1,4 +1,6 @@
+
 package com.mavericks.miumbaseales.ui.themes
+package com.mavericks.mitumbaesales.ui.theme
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -20,6 +22,8 @@ import com.mavericks.mitumbaesales.ui.theme.Beige
 import com.mavericks.mitumbaesales.ui.theme.Gold
 import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -34,8 +38,6 @@ val Poppins = FontFamily(
     Font(R.font.poppins_bold, FontWeight.Bold),
     Font(R.font.poppins_light, FontWeight.Light)
 )
-
-
 
 
 private val DarkColorScheme = darkColorScheme(
@@ -83,6 +85,7 @@ private val LightColorScheme = lightColorScheme(
     background = White,
     onBackground = NavyBlue,
     surfaceVariant = LightYellow,
+    onSurfaceVariant = NavyBlue
 )
 
 @Composable
