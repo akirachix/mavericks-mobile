@@ -33,6 +33,7 @@ import com.mavericks.mitumbaesales.ui.theme.LightYellow
 import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
 import com.mavericks.mitumbaesales.ui.theme.White
 import com.mavericks.mitumbaesales.ui.theme.poppinsFontFamily
+import com.mavericks.miumbaseales.ui.themes.MitumbaesalesTheme
 
 @Composable
 fun NewSignInScreen(
