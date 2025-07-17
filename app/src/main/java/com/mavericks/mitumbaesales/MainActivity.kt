@@ -27,6 +27,13 @@ class MainActivity : ComponentActivity() {
             }
 
             MitumbaesalesTheme {
+                SignUpScreen()
+            }
+        }
+    }
+}
+
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
 
@@ -63,4 +70,5 @@ fun DefaultPreview() {
         NewSignInScreen(onForgotPasswordClick = {}, onSignUpClick = {})
     }
 }
+
 
