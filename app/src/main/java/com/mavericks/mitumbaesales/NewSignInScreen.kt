@@ -1,4 +1,5 @@
-package com.mavericks.mitumbaesales.screens
+package com.mavericks.mitumbaesales
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,8 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
-import com.mavericks.mitumbaesales.R
-import com.mavericks.mitumbaesales.ui.theme.MitumbaesalesTheme
 import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 import com.mavericks.mitumbaesales.ui.theme.LightYellow
 import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
