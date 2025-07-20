@@ -33,6 +33,7 @@ import com.mavericks.miumbaseales.ui.themes.MitumbaesalesTheme
 @Composable
 fun ForgotPasswordScreen(
     onBackToLoginClicked: () -> Unit,
+    onSubmitClicked:()->Unit,
     modifier: Modifier = Modifier
 ) {
     var emailOrPhone by remember { mutableStateOf("") }
@@ -181,7 +182,7 @@ fun ForgotPasswordScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = {  },
+                    onClick = { onSubmitClicked() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -206,6 +207,9 @@ fun ForgotPasswordScreen(
 @Composable
 fun PreviewForgotPasswordScreen() {
     MitumbaesalesTheme {
-        ForgotPasswordScreen(onBackToLoginClicked = {})
+        ForgotPasswordScreen(
+            onBackToLoginClicked = {},
+            onSubmitClicked = {}
+            )
     }
 }

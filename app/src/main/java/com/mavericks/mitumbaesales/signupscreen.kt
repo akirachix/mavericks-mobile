@@ -3,6 +3,7 @@ package com.mavericks.mitumbaesales
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -35,9 +36,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-
-
-
+import androidx.compose.ui.unit.TextUnit
+import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
+import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 
 
 val poppinsFontFamily = FontFamily(
@@ -50,7 +51,10 @@ val poppinsFontFamily = FontFamily(
 )
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    onClickSignUpButtom:()->Unit,
+    onLoginClick:()->Unit
+) {
 
 
     var name by remember { mutableStateOf("") }
@@ -206,25 +210,26 @@ fun SignUpScreen() {
                 }
 
 
+
+
                 Spacer(modifier = Modifier.height(18.dp))
 
-
                 Row(
-                    horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        "Have an account? ",
-                        fontFamily = poppinsFontFamily,
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(color = Color.Black)) {
+                                append("Have an account? ")
+                            }
+                            withStyle(style = SpanStyle(color = NavyBlue, fontWeight = FontWeight.Bold)) {
+                                append("Login")
+                            }
+                        },
+                        fontFamily = com.mavericks.mitumbaesales.ui.theme.poppinsFontFamily,
                         fontSize = 16.sp,
-                        color = Color(0xFF171717),
-                    )
-                    Text(
-                        "Login",
-                        fontFamily = poppinsFontFamily,
-                        fontSize = 16.sp,
-                        color = Color(0xFF01305D),
-                        fontWeight = FontWeight.Bold
+                        modifier = Modifier.clickable { onLoginClick() }
                     )
                 }
             }
@@ -293,10 +298,13 @@ fun InputField(
     )
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewSignUpScreen(){
 
-    SignUpScreen()
+    SignUpScreen(
+        onClickSignUpButtom = {}, onLoginClick = {}
+    )
 }
 

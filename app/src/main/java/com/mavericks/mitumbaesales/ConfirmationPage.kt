@@ -24,7 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun SuccessScreen() {
+fun SuccessScreen(
+    onContinueClicked:()->Unit,
+) {
     val poppinsFontFamily = FontFamily(
         Font(R.font.poppins_regular),
         Font(R.font.poppins_bold)
@@ -72,7 +74,7 @@ fun SuccessScreen() {
             )
             Spacer(modifier = Modifier.weight(1f))
             Button(
-                onClick = {  },
+                onClick = { onContinueClicked() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
@@ -96,5 +98,7 @@ fun SuccessScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSuccessScreen() {
-    SuccessScreen()
+    SuccessScreen(
+        onContinueClicked = {}
+    )
 }
