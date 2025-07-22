@@ -1,14 +1,10 @@
 package com.mavericks.mitumbaesales
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -29,23 +25,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-
-
-
+import androidx.compose.ui.unit.TextUnit
+import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
+import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 
 
 val poppinsFontFamily = FontFamily(
@@ -57,15 +50,11 @@ val poppinsFontFamily = FontFamily(
     Font(R.font.poppins_thin, FontWeight.Thin)
 )
 
-
-
-
-
-
-
-
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    onClickSignUpButtom:()->Unit,
+    onLoginClick:()->Unit
+) {
 
 
     var name by remember { mutableStateOf("") }
@@ -85,16 +74,16 @@ fun SignUpScreen() {
                 Brush.linearGradient(
                     colors = listOf(Color(0xFF01305D), Color(0xFFDEB038)),
                     start = Offset(0f, 0f),
-                    // Adjusted end offset for a more vertical gradient fill effect
+
                     end = Offset(0f, Float.POSITIVE_INFINITY)
                 )
             )
     ) {
-        // White rounded card
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.92f) // Consider making this more dynamic if content can vary
+                .fillMaxHeight(0.92f)
                 .align(Alignment.BottomCenter)
                 .clip(RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp))
                 .background(Color.White)
@@ -115,9 +104,6 @@ fun SignUpScreen() {
                 )
 
 
-
-
-                // Name field
                 InputField(
                     value = name,
                     onValueChange = { name = it },
@@ -125,12 +111,6 @@ fun SignUpScreen() {
                     placeholder = "Enter name"
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-
-
-
-
-
-
 
 
                 InputField(
@@ -143,12 +123,6 @@ fun SignUpScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
 
 
-
-
-
-
-
-
                 InputField(
                     value = phone,
                     onValueChange = { phone = it },
@@ -157,12 +131,6 @@ fun SignUpScreen() {
                     keyboardType = KeyboardType.Phone
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-
-
-
-
-
-
 
 
                 InputField(
@@ -174,13 +142,6 @@ fun SignUpScreen() {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
-
-
-
-
-
-
-
                 InputField(
                     value = confirmPassword,
                     onValueChange = { confirmPassword = it },
@@ -191,16 +152,10 @@ fun SignUpScreen() {
                 Spacer(modifier = Modifier.height(24.dp))
 
 
-
-
-
-
-
-
                 Button(
-                    onClick = { /* handle sign up */ },
+                    onClick = { },
                     colors = ButtonDefaults.buttonColors(containerColor  = Color(0xFFDEB038)),
-                    shape = RoundedCornerShape(20.dp), // Consider using MaterialTheme.shapes for consistency
+                    shape = RoundedCornerShape(20.dp),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(55.dp)
@@ -221,23 +176,17 @@ fun SignUpScreen() {
 
 
 
-
-
-
-
-
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
-                    // .padding(start = 4.dp) // Checkbox has its own internal padding
                 ) {
                     Checkbox(
                         checked = isChecked,
                         onCheckedChange = { isChecked = it },
                         colors = CheckboxDefaults.colors(
                             checkedColor = Color(0xFF01305D),
-                            uncheckedColor = Color.Black, // Consider a less stark color for unchecked
+                            uncheckedColor = Color.Black,
                             checkmarkColor = Color.White
                         )
                     )
@@ -256,8 +205,7 @@ fun SignUpScreen() {
                         },
                         fontFamily = poppinsFontFamily,
                         fontSize = 14.sp,
-                        // Add a default color for the text that is not styled
-                        color = Color.Black.copy(alpha = 0.7f) // Example: slightly dimmed black
+                        color = Color.Black.copy(alpha = 0.7f)
                     )
                 }
 
@@ -266,39 +214,28 @@ fun SignUpScreen() {
 
                 Spacer(modifier = Modifier.height(18.dp))
 
-
-
-
-
-
-
-
                 Row(
-                    horizontalArrangement = Arrangement.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        "Have an account? ",
-                        fontFamily = poppinsFontFamily,
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(color = Color.Black)) {
+                                append("Have an account? ")
+                            }
+                            withStyle(style = SpanStyle(color = NavyBlue, fontWeight = FontWeight.Bold)) {
+                                append("Login")
+                            }
+                        },
+                        fontFamily = com.mavericks.mitumbaesales.ui.theme.poppinsFontFamily,
                         fontSize = 16.sp,
-                        color = Color(0xFF171717),
-                    )
-                    Text(
-                        "Login",
-                        fontFamily = poppinsFontFamily,
-                        fontSize = 16.sp,
-                        color = Color(0xFF01305D),
-                        fontWeight = FontWeight.Bold
-
-
+                        modifier = Modifier.clickable { onLoginClick() }
                     )
                 }
             }
         }
     }
 }
-
-
 
 
 @Composable
@@ -310,14 +247,13 @@ fun InputField(
     keyboardType: KeyboardType = KeyboardType.Text,
     isPassword: Boolean = false
 ) {
-    // The outer Box for background and border seems fine.
-    // The main change is within the TextField call.
+
     TextField(
         value = value,
         onValueChange = onValueChange,
         modifier = Modifier
             .fillMaxWidth()
-            .height(55.dp) // Height is often controlled by TextField's internal padding & text style
+            .height(55.dp)
             .border(
                 BorderStroke(1.dp, Color(0xFFE0DFB6)),
                 shape = RoundedCornerShape(16.dp)
@@ -337,42 +273,38 @@ fun InputField(
                 fontWeight = FontWeight.Medium
             )
         },
-        leadingIcon = { // Use leadingIcon for the icon inside the TextField
+        leadingIcon = {
             Icon(
                 imageVector = icon,
-                contentDescription = null, // Provide a meaningful description if needed
+                contentDescription = null,
                 tint = Color(0xFF707070),
                 modifier = Modifier.size(28.dp)
             )
         },
         visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-        singleLine = true, // Common for input fields like these
-        shape = RoundedCornerShape(16.dp), // Apply shape to TextField as well
-        colors = TextFieldDefaults.colors( // Use M3 TextFieldDefaults.colors
+        singleLine = true,
+        shape = RoundedCornerShape(16.dp),
+        colors = TextFieldDefaults.colors(
             focusedContainerColor = Color(0xFFF9F8E4),
             unfocusedContainerColor = Color(0xFFF9F8E4),
             disabledContainerColor = Color(0xFFF9F8E4),
-            focusedIndicatorColor = Color.Transparent, // Hides the underline indicator
-            unfocusedIndicatorColor = Color.Transparent, // Hides the underline indicator
-            disabledIndicatorColor = Color.Transparent, // Hides the underline indicator
-            cursorColor = Color(0xFF01305D), // Example cursor color
-            // You can also customize text color, placeholder color, etc. here if needed
-            // but your textStyle and placeholder composable already handle some of this.
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            cursorColor = Color(0xFF01305D),
+
         )
     )
 }
-
-
 
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewSignUpScreen(){
 
-
-    SignUpScreen()
-
-
+    SignUpScreen(
+        onClickSignUpButtom = {}, onLoginClick = {}
+    )
 }
 
