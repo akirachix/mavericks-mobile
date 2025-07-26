@@ -25,16 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.TextFieldDefaults
+
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 
-
-val poppinsFontFamily = FontFamily(
-    Font(R.font.poppins_regular),
-    Font(R.font.poppins_bold)
-)
 
 
 @Composable

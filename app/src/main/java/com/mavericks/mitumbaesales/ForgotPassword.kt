@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
 import com.mavericks.mitumbaesales.R
-import com.mavericks.mitumbaesales.ui.theme.MitumbaesalesTheme
 import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 import com.mavericks.mitumbaesales.ui.theme.LightYellow
 import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow

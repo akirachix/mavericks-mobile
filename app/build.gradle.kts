@@ -67,7 +67,17 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.navigation:navigation-compose:2.7.7")
+    
     implementation("androidx.compose.ui:ui-text-google-fonts:1.8.1")
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.compose.material3.material3)
+    implementation(libs.coil.compose)
+    implementation(libs.accompanist.pager)
+
+
+    
+    
+
 
 }

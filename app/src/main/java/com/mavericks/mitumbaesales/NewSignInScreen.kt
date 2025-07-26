@@ -1,5 +1,4 @@
 package com.mavericks.mitumbaesales.screens
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.TextUnit
 import com.mavericks.mitumbaesales.R
-import com.mavericks.mitumbaesales.ui.theme.MitumbaesalesTheme
 import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 import com.mavericks.mitumbaesales.ui.theme.LightYellow
 import com.mavericks.mitumbaesales.ui.theme.GoldenrodYellow
@@ -39,20 +37,17 @@ import com.mavericks.miumbaseales.ui.themes.MitumbaesalesTheme
 fun NewSignInScreen(
     onForgotPasswordClick: () -> Unit,
     onSignUpClick: () -> Unit,
+    onLoginSuccess: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
-
-
 
     Column(
         modifier = modifier
             .fillMaxSize()
             .background(White)
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -75,7 +70,6 @@ fun NewSignInScreen(
                     .align(Alignment.BottomCenter)
             )
         }
-
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -160,7 +154,7 @@ fun NewSignInScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_password),
                             contentDescription = "Lock icon",
-                            tint = NavyBlue // Use NavyBlue
+                            tint = NavyBlue
                         )
                     },
                     visualTransformation = PasswordVisualTransformation(),
@@ -193,7 +187,11 @@ fun NewSignInScreen(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = { },
+                    onClick = {
+
+
+                        onLoginSuccess()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -232,12 +230,11 @@ fun NewSignInScreen(
         }
     }
 }
-
 @Composable
 fun AlignRightText(
     text: String,
     color: Color,
-    fontSize: TextUnit,
+    fontSize: androidx.compose.ui.unit.TextUnit,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -254,11 +251,15 @@ fun AlignRightText(
         )
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewNewSignInScreen() {
     MitumbaesalesTheme {
-        NewSignInScreen(onForgotPasswordClick = {}, onSignUpClick = {})
+        NewSignInScreen(
+            onForgotPasswordClick = {},
+            onSignUpClick = {},
+            onLoginSuccess = {}
+        )
     }
 }
+

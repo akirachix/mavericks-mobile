@@ -1,6 +1,5 @@
 
 package com.mavericks.miumbaseales.ui.themes
-package com.mavericks.mitumbaesales.ui.theme
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -23,7 +22,7 @@ import com.mavericks.mitumbaesales.ui.theme.Gold
 import com.mavericks.mitumbaesales.ui.theme.NavyBlue
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
+
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -33,7 +32,7 @@ import com.mavericks.mitumbaesales.ui.theme.LightYellow
 import com.mavericks.mitumbaesales.ui.theme.White
 
 
-val Poppins = FontFamily(
+val poppinsFontFamily = FontFamily(
     Font(R.font.poppins_regular, FontWeight.Normal),
     Font(R.font.poppins_bold, FontWeight.Bold),
     Font(R.font.poppins_light, FontWeight.Light)
@@ -55,19 +54,19 @@ private val DarkColorScheme = darkColorScheme(
 
 val AppTypography = Typography(
     titleLarge = TextStyle(
-        fontFamily = Poppins,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
         color = NavyBlue
     ),
     bodyMedium = TextStyle(
-        fontFamily = Poppins,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         color = NavyBlue
     ),
     labelSmall = TextStyle(
-        fontFamily = Poppins,
+        fontFamily = poppinsFontFamily,
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
         color = Gold
